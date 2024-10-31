@@ -20,7 +20,7 @@ class BossModel(models.Model):
         return self.name
 
 
-""" 
+"""
 Модель для загрузки заявления на отпуск с вложением 
 """
 
