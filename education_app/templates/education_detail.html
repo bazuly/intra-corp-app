@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="news-detail">
+        {% if education_item.main_photo %}
+        <div class="news-photo">
+            <img src="{{ education_item.main_photo.url }}" alt="{{ education_item.title }}" />
+        </div>
+        {% endif %}
+        <div class="news-details">
+            <h1> {{ education_item.title}} </h1>
+            <p> {{ education_item.content|safe}}</p>
+            <p>Опубликовано: {{ education_item.uploaded_at }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

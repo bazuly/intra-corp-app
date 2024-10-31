@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Результаты поиска</h1>
+    
+    <form class="search-form" method="get" action="{% url 'hr_app:non_auth_vacation_search' %}">
+        <input type="text" name="q" value="{{ query }}" placeholder="Введите имя для поиска" required>
+        <button type="submit">Искать</button>
+    </form>
+
+    {% if vac_data %}
+        <ul class="vacation-list">
+            {% for vacation in vac_data %}
+                <li>ФИО: {{ vacation.name | title }}
+                <br>Должность: {{ vacation.job | title }}
+                <br>Дата начала отпуска: {{ vacation.vacation_date_start }}
+                <br>Дата окончания отпуска: {{ vacation.vacation_date_end }}
+                <br>Статус согласования: {{ vacation.status_confirm }}
+                <br>Заявление отравлено: {{ vacation.uploaded_at }}
+                <br>
+                <br>
+            {% endfor %}
+        </ul>
+    {% elif vac_data is not None %}
+        <p>Нет результатов</p>
+    {% endif %}
+    
+    {% endblock %}
+</body>
+</html>

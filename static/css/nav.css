@@ -1,0 +1,70 @@
+nav {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li {
+  position: relative;
+  margin: 0;
+  white-space: nowrap;
+}
+
+nav ul li a {
+  color: #555;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #1e3c72;
+  color: #fff;
+}
+
+nav ul li.has-submenu > a::after {
+  content: " ▼";
+  margin-left: 5px;
+}
+
+nav ul li.has-submenu .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+nav ul li.has-submenu:hover .submenu {
+  display: block;
+}
+
+nav ul li.has-submenu .submenu li a {
+  display: block;
+  padding: 8px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li.has-submenu .submenu li a:hover {
+  background-color: #4a90e2;
+  color: #fff;
+}

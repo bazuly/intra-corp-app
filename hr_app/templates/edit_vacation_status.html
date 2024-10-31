@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Vacation Status</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Статус согласования</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="status_confirm">Status Confirm:</label>
+        <select id="status_confirm" name="status_confirm">
+            {% for choice in vacation.STATUS_CHOICES %}
+                <option value="{{ choice.0 }}" {% if choice.0 == vacation.status_confirm %}selected{% endif %}>
+                    {{ choice.1 }}
+                </option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Обновить</button>
+    </form>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Создать новость</h1>
+
+<form method="post">
+  {% csrf_token %} {{ news_form.as_p }}
+  <label for="{{ news_form.photo.id_for_label }}"> Изображение </label>
+  <input type="file" name="news_file" multiple required />
+  <button type="submit">Создать</button>
+</form>
+
+<a href="{% url 'news_app:news_list' %}">Назад к списку новостей</a>
+{% endblock %}

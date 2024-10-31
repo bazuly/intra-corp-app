@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="centered-heading news-heading">Обучение для сотрудников</h1>
+    <div class="news-list">
+        {% for lesson in education_data %}
+        <a href="{% url 'education_app:education_content_detail' lesson.id %}" class="news-card-link">
+            <div class="news-card">
+                {% if lesson.main_photo %}
+                <div class="news-photo">
+                    <img src="{{ lesson.main_photo.url }}" alt="{{ lesson.title }}">
+                </div>
+                {% endif %}
+                <div class="news-details">
+                    <h2>{{ lesson.title|safe }}</h2>
+                    <p>Опубликовано: {{ lesson.uploaded_at }}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if education_data.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ education_data.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ education_data.number }} из {{ education_data.paginator.num_pages }}.
+            </span>
+
+            {% if education_data.has_next %}
+                <a href="?page={{ education_data.next_page_number }}">Следующая</a>
+                <a href="?page={{ education_data.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

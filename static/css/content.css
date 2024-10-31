@@ -1,0 +1,236 @@
+form {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="email"]:focus {
+  border-color: #1e3c72;
+}
+
+form input[type="submit"],
+form button {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+}
+
+.reset-link {
+  margin-left: 10px;
+  color: #1e3c72;
+  text-decoration: none;
+}
+
+.reset-link:hover {
+  text-decoration: underline;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.news-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.news-photo {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.news-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.news-card:hover .news-photo img {
+  transform: scale(1.05);
+}
+
+.news-details {
+  padding: 10px 0;
+  text-align: left;
+}
+
+.news-details h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.news-details p {
+  font-size: 16px;
+  color: #666;
+}
+
+.news-content {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination .step-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+}
+
+.pagination .step-links a {
+  color: #1e3c72;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination .step-links a:hover {
+  background-color: #1e3c72;
+  color: #fff;
+}
+
+.pagination .step-links .current {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #1e3c72;
+  color: #fff;
+}
+
+.employee-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.employee-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  width: 300px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.employee-photo {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+
+.employee-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; 
+  transition: transform 0.3s;
+}
+
+.employee-card:hover .employee-photo img {
+  transform: scale(1.05);
+}
+
+.employee-details {
+  padding: 20px;
+}
+
+.employee-details h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.employee-details p {
+  font-size: 16px;
+  color: #666;
+}
+
+.vacancy-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vacancy-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.vacancy-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.vacancy-content {
+  text-align: justify;
+  line-height: 1.6;
+}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="centered-heading news-heading">Список новостей</h1>
+    {% comment %} {% if user.is_authenticated and perms.news_app.can_add_news_model %}
+    <a href="{% url 'news_app:news_create' %}" class="btn btn-primary">Создать новость</a>
+    {% endif %} {% endcomment %}
+    <div class="news-list">
+        {% for news in news_data %}
+            <a href="{% url 'news_app:news_detail' news.id %}" class="news-card-link">
+                <div class="news-card">
+                    {% if news.photo %}
+                    <div class="news-photo">
+                        <img src="{{ news.photo.url }}">
+                    </div>
+                    {% endif %}
+                    <div class="news-details">
+                        <h2>{{ news.title|safe}}</h2>
+                        {% comment %} <p>{{ news.content|truncatewords:30|safe}}</p> {% endcomment %}
+                        <p>Опубликовано: {{ news.published_at }}</p>
+                        {% if user.is_authenticated and perms.news_app.can_change_news_model %}
+                        <a href="{% url 'news_app:news_edit' news.id %}" class="btn btn-secondary">Редактировать</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if news_data.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ news_data.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ news_data.number }} из {{ news_data.paginator.num_pages }}.
+            </span>
+
+            {% if news_data.has_next %}
+                <a href="?page={{ news_data.next_page_number }}">Следующая</a>
+                <a href="?page={{ news_data.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

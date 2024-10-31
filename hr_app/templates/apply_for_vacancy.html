@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Отклик на вакансию: {{ vacancy_item.vacancy_name|capfirst }}</h1>
+    <form action="{% url 'hr_app:response_to_vacancy' vacancy_item.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ vacancy_form.as_p }} 
+        <button type="submit">Отправить отклик</button>
+    </form>
+    <br>
+    <br>
+    <a href="{% url 'hr_app:vacancy_list' %}" class="back-link">Вернуться к списку вакансий</a>
+</div>
+{% endblock %}

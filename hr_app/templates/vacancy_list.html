@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="centered-heading vacancy-heading">Активные вакансии</h1>
+    <div class="vacancy-grid">
+        {% for vacancy in vacancy_data %}
+            <div class="vacancy-item">
+                <h2>{{ vacancy.vacancy_name|capfirst }}</h2>
+                <div class="vacancy-content">
+                    {{ vacancy.content|truncatewords:20 | safe }}
+                </div>
+                <a href="{% url 'hr_app:vacancy_detail' vacancy.id %}" class="vacancy-link">Подробнее</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if vacancy_data.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ vacancy_data.previous_page_number }}">Назад</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ vacancy_data.number }} из {{ vacancy_data.paginator.num_pages }}.
+            </span>
+
+            {% if vacancy_data.has_next %}
+                <a href="?page={{ vacancy_data.next_page_number }}">Вперед</a>
+                <a href="?page={{ vacancy_data.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

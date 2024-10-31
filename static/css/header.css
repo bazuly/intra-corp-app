@@ -1,0 +1,8 @@
+header {
+  background: url("/static/images/topview4.jpg") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
