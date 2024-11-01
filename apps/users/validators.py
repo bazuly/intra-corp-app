@@ -9,7 +9,7 @@ def corp_email_validator(value):
 
     try:
         email_validator(value)
-    except:
+    except:  # noqa: E722
         raise ValidationError('В доступе отказано')
 
     domain = value.split('@')[1]

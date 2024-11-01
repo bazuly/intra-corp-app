@@ -1,6 +1,8 @@
 /media
 .media
 site_grando/media
-__pycache__.media
-__pycache__
 db.sqlite3
+**/__pycache__/
+**/cache/
+**/*.py[cod]
+.env
