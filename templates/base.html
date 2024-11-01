@@ -20,35 +20,35 @@
     <nav>
         <ul>
             <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Главная</a></li>
-            <li><a href="{% url 'news_app:news_list' %}"><i class="fas fa-newspaper"></i> Новости</a></li>
-            <li><a href="{% url 'about_app:page_about' %}"><i class="fas fa-users"></i> Наша команда</a></li>
+            <li><a href="{% url 'apps.news_app:news_list' %}"><i class="fas fa-newspaper"></i> Новости</a></li>
+            <li><a href="{% url 'apps.about_app:page_about' %}"><i class="fas fa-users"></i> Наша команда</a></li>
             {% if user.is_authenticated %}
             
             <li class="has-submenu">
                 <a href="#"><i class="fas fa-user-cog"></i> Для сотрудников</a>
                 <ul class="submenu">
-                    <li><a href="{% url 'hr_app:vacation_upload' %}">Заявление на отпуск</a></li>
-                    <li><a href="{% url 'hr_app:vacation_list' %}">Статус заявления</a></li>
-                    <li><a href="{% url 'feedback_app:feedback' %}">Опрос и обратная связь</a></li>
-                    <li><a href="{% url 'about_app:reference_book_list' %}"> Контактная информация</a></li>
-                    <li><a href="{% url 'education_app:education_content' %}"> Обучение</a></li>
+                    <li><a href="{% url 'apps.hr_app:vacation_upload' %}">Заявление на отпуск</a></li>
+                    <li><a href="{% url 'apps.hr_app:vacation_list' %}">Статус заявления</a></li>
+                    <li><a href="{% url 'apps.feedback_app:feedback' %}">Опрос и обратная связь</a></li>
+                    <li><a href="{% url 'apps.about_app:reference_book_list' %}"> Контактная информация</a></li>
+                    <li><a href="{% url 'apps.education_app:education_content' %}"> Обучение</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'hr_app:vacancy_list' %}"><i class="fas fa-list"></i> Активные вакансии</a></li>
-            <li><a href="{% url 'users:logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти</a></li>
+            <li><a href="{% url 'apps.hr_app:vacancy_list' %}"><i class="fas fa-list"></i> Активные вакансии</a></li>
+            <li><a href="{% url 'apps.users:logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти</a></li>
             {% else %}
-            <li><a href="{% url 'hr_app:vacancy_list' %}"><i class="fas fa-list"></i> Активные вакансии</a></li>
+            <li><a href="{% url 'apps.hr_app:vacancy_list' %}"><i class="fas fa-list"></i> Активные вакансии</a></li>
             <li class="has-submenu">
                 <a href="#"><i class="fas fa-user-cog"></i> Для сотрудников</a>
                 <ul class="submenu">
-                    <li><a href="{% url 'hr_app:vacation_upload' %}">Заявление на отпуск</a></li>
-                    <li><a href="{% url 'hr_app:search_form_non_auth_user' %}">Статус заявления</a></li>
-                    <li><a href="{% url 'feedback_app:feedback' %}">Опрос и обратная связь</a></li>
-                    <li><a href="{% url 'education_app:education_content' %}"> Обучение</a></li>
+                    <li><a href="{% url 'apps.hr_app:vacation_upload' %}">Заявление на отпуск</a></li>
+                    <li><a href="{% url 'apps.hr_app:search_form_non_auth_user' %}">Статус заявления</a></li>
+                    <li><a href="{% url 'apps.feedback_app:feedback' %}">Опрос и обратная связь</a></li>
+                    <li><a href="{% url 'apps.education_app:education_content' %}"> Обучение</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'users:login' %}"><i class="fas fa-sign-in-alt"></i> Войти</a></li>
-            <li><a href="{% url 'users:register' %}"><i class="fas fa-user-plus"></i> Регистрация</a></li>
+            <li><a href="{% url 'apps.users:login' %}"><i class="fas fa-sign-in-alt"></i> Войти</a></li>
+            <li><a href="{% url 'apps.users:register' %}"><i class="fas fa-user-plus"></i> Регистрация</a></li>
             {% endif %}
         </ul>
     </nav>

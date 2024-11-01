@@ -7,14 +7,14 @@ from .views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('vacation/', include('hr_app.urls'), name='vacation_upload'),
-    path('users/', include('users.urls'), name='users'),
-    path('news/', include('news_app.urls'), name='news'),
-    path('about/', include('about_app.urls'), name='about'),
+    path('vacation/', include('apps.hr_app.urls'), name='vacation_upload'),
+    path('users/', include('apps.users.urls'), name='users'),
+    path('news/', include('apps.news_app.urls'), name='news'),
+    path('about/', include('apps.about_app.urls'), name='about'),
     path('grando-main-page/', index, name='index'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('feedback/', include('feedback_app.urls'), name='feedback'),
-    path('education', include('education_app.urls'), name='education')
+    path('feedback/', include('apps.feedback_app.urls'), name='feedback'),
+    path('education', include('apps.education_app.urls'), name='education')
 
 ]
 

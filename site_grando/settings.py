@@ -19,12 +19,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # project apps
-    'hr_app',
-    'users',
-    'news_app',
-    'about_app',
-    'feedback_app',
-    'education_app',
+    'apps.hr_app',
+    'apps.users',
+    'apps.news_app',
+    'apps.about_app',
+    'apps.feedback_app',
+    'apps.education_app',
 
     # additional libs
     'ckeditor',
