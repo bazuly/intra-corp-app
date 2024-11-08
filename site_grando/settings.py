@@ -6,33 +6,38 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure--n2d&39wih-u7-2y8)g=gl4d-d$0o&*(ve!-%nr+%6nr^-479y'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*'
+]
 
-INSTALLED_APPS = [
-    # default
+DEFAULT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
 
-    # project apps
+PROJECT_APPS = [
     'apps.hr_app',
     'apps.users',
     'apps.news_app',
     'apps.about_app',
     'apps.feedback_app',
     'apps.education_app',
+]
 
-    # additional libs
+ADDITIONAL_APPS = [
     'ckeditor',
     'ckeditor_uploader'
 ]
+
+INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + ADDITIONAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,14 +70,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'site_grando.wsgi.application'
 
+# database configuration
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB"),
-        "USER": os.getenv("POSTGRES_USER"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": "db",
-        "PORT": os.getenv("POSTGRES_PORT"),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': os.environ.get('POSTGRES_PORT'),
     }
 }
 
@@ -91,9 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 """ TIME|LANGUAGE FORM """
-
 
 LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Europe/Moscow'
@@ -107,7 +111,6 @@ TIME_INPUT_FORMATS = [
 USE_I18N = True
 
 USE_TZ = True
-
 
 """ STATIC|MEDIA CONFIG """
 
@@ -123,9 +126,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_USER_IMAGE = 'static/images/default-image.png'
 
-
 """ EMAIL CONFIG """
-
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 

@@ -1,0 +1,24 @@
+# image_api/Dockerfile.base
+FROM python:3.12.1-slim-bullseye
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /app
+
+RUN apt update -y && \
+    apt install -y python3-dev \
+    gcc \
+    musl-dev \
+    libpq-dev \
+    nmap
+
+COPY requirements.txt /app/requirements.txt
+
+RUN pip install --upgrade pip && \
+    pip install -r /app/requirements.txt
+
+COPY ./ /app/
+
+CMD ["gunicorn", "intra-corp-app.wsgi:application", "--bind", "0.0.0.0:8000"]
+

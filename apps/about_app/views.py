@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import AboutEmployeeModel, ReferenceBookModel
 from django.contrib.auth.decorators import login_required
+from .models import AboutEmployeeModel, ReferenceBookModel
 from site_grando.handlers.pagination_handler import paginate_queryset
 from apps.about_app.services.filter_reference_book_data import (
     filter_reference_book_data
