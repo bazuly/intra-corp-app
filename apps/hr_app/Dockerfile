@@ -5,4 +5,4 @@ WORKDIR /app/apps/hr_app
 
 COPY . /app/apps/hr_app
 
-CMD ["gunicorn", "intra-corp-app.wsgi:application", "--bind", "0.0.0.0:8003"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8003"]

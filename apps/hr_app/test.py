@@ -4,7 +4,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from apps.about_app.models import JobModel
 from .models import VacationModel, VacancyModel, VacancyRequestModel
 
-from users.models import User
+from apps.users.models import User
 
 
 class HrAppTest(TestCase):

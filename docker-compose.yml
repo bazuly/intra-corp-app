@@ -1,0 +1,173 @@
+services:
+
+  db:
+    image: postgres:16.2
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+  web_app:
+    build:
+      context: ./site_grando
+      dockerfile: Dockerfile.base
+    restart: always
+    container_name: web_app
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    working_dir: /app/site_grando
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=site_grando.settings
+      - PYTHONPATH=/app:/app/apps
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  users_app:
+    tty: true
+    build:
+      context: ./apps/users
+      dockerfile: Dockerfile
+    container_name: users_app
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+    working_dir: /app/apps/users
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=site_grando.settings
+      - PYTHONPATH=/app:/app/apps
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  news_app:
+    tty: true
+    build:
+      context: ./apps/news_app
+      dockerfile: Dockerfile
+    container_name: news_app
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8002"]
+    working_dir: /app/apps/news_app
+    volumes:
+      - .:/app
+    ports:
+      - "8002:8002"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=site_grando.settings
+      - PYTHONPATH=/app:/app/apps
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  hr_app:
+    tty: true
+    build:
+      context: ./apps/hr_app
+      dockerfile: Dockerfile
+    container_name: hr_app
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8003"]
+    working_dir: /app/apps/hr_app
+    volumes:
+      - .:/app
+    ports:
+      - "8003:8003"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=site_grando.settings
+      - PYTHONPATH=/app:/app/apps
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  feedback_app:
+    tty: true
+    build:
+      context: ./apps/feedback_app
+      dockerfile: Dockerfile
+    container_name: feedback_app
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8004"]
+    working_dir: /app/apps/feedback_app
+    volumes:
+      - .:/app
+    ports:
+      - "8004:8004"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=site_grando.settings
+      - PYTHONPATH=/app:/app/apps
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  education_app:
+    tty: true
+    build:
+      context: ./apps/education_app
+      dockerfile: Dockerfile
+    container_name: education_app
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8005"]
+    working_dir: /app/apps/education_app
+    volumes:
+      - .:/app
+    ports:
+      - "8005:8005"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=site_grando.settings
+      - PYTHONPATH=/app:/app/apps
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  about_app:
+    tty: true
+    build:
+      context: ./apps/about_app
+      dockerfile: Dockerfile
+    container_name: about_app
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8006"]
+    working_dir: /app/apps/about_app
+    volumes:
+      - .:/app
+    ports:
+      - "8006:8006"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=site_grando.settings
+      - PYTHONPATH=/app:/app/apps
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

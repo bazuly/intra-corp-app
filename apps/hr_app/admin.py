@@ -14,7 +14,4 @@ class VacancyModelAdmin(admin.ModelAdmin):
     list_display = ['vacancy_name', 'salary', 'content']
     search_fields = ['vacancy_name']
     save_on_top = True
-    
-    
-admin.site.register(HrEmailModel)
-admin.site.register(BossModel)
+

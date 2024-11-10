@@ -11,7 +11,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '*'
+    '*' # remove when prod
 ]
 
 DEFAULT_APPS = [
@@ -24,12 +24,12 @@ DEFAULT_APPS = [
 ]
 
 PROJECT_APPS = [
-    'apps.hr_app',
     'apps.users',
     'apps.news_app',
     'apps.about_app',
     'apps.feedback_app',
     'apps.education_app',
+    'apps.hr_app',
 ]
 
 ADDITIONAL_APPS = [
@@ -37,7 +37,8 @@ ADDITIONAL_APPS = [
     'ckeditor_uploader'
 ]
 
-INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + ADDITIONAL_APPS
+INSTALLED_APPS = PROJECT_APPS + DEFAULT_APPS + ADDITIONAL_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

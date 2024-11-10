@@ -5,4 +5,4 @@ WORKDIR /app/apps/about_app
 
 COPY . /app/apps/about_app
 
-CMD ["gunicorn", "intra-corp-app.wsgi:application", "--bind", "0.0.0.0:8006"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8006"]
